@@ -1,11 +1,6 @@
 class Spree::WishedProduct < ActiveRecord::Base
-  if Gem.loaded_specs['spree_core'].version >= Gem::Version.create('3.3.0')
-      belongs_to :variant, optional: true
-      belongs_to :wishlist, optional: true
-    else
-      belongs_to :variant
-      belongs_to :wishlist
-  end
+  belongs_to :variant
+  belongs_to :wishlist
 
   def total
     quantity * variant.price
@@ -15,4 +10,17 @@ class Spree::WishedProduct < ActiveRecord::Base
     Spree::Money.new(total)
   end
 
+  private
+
+  def variant_exists
+    if Spree::Variant.where(id: variant_id).count.zero?
+      errors.add(:variant, 'invalid variant id')
+    end
+  end
+
+  def wishlist_exists
+    if Spree::Wishlist.where(id: wishlist_id).count.zero?
+      errors.add(:wishlist, 'invalid wishlist id')
+    end
+  end
 end

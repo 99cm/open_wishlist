@@ -8,4 +8,4 @@ Gemfile.lock
 .rvmrc
 .ruby-version
 .ruby-gemset
-gemfiles/*.lock
+.byebug_history

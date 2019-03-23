@@ -12,13 +12,13 @@ RSpec.describe WishlistAbility do
       let(:resource) { create(:wishlist, is_private: true, user: user) }
 
       context 'requested by same user' do
-        it_should_behave_like 'allow CRUD'
+        it_behaves_like 'allow CRUD'
       end
 
       context 'requested by other user' do
         subject { described_class.new(nil) }
-        it_should_behave_like 'access denied'
-        it_should_behave_like 'no index allowed'
+        it_behaves_like 'access denied'
+        it_behaves_like 'no index allowed'
       end
     end
 
@@ -26,12 +26,12 @@ RSpec.describe WishlistAbility do
       let(:resource) { create(:wishlist, is_private: false, user: user) }
 
       context 'requested by same user' do
-        it_should_behave_like 'allow CRUD'
+        it_behaves_like 'allow CRUD'
       end
 
       context 'requested by other user' do
         subject { described_class.new(nil) }
-        it_should_behave_like 'read only'
+        it_behaves_like 'read only'
       end
     end
   end
@@ -47,13 +47,13 @@ RSpec.describe WishlistAbility do
 
     context 'requested by same user' do
       subject { described_class.new(user) }
-      it_should_behave_like 'allow CRUD'
+      it_behaves_like 'allow CRUD'
     end
 
     context 'requested by other user' do
       subject { described_class.new(nil) }
-      it_should_behave_like 'access denied'
-      it_should_behave_like 'no index allowed'
+      it__behaves_like 'access denied'
+      it_behaves_like 'no index allowed'
     end
   end
 end

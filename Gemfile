@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'spree', github: 'spree/spree'
-gem 'spree_auth_devise', github: 'spree/spree_auth_devise'
+gem 'open', github: '99cm/open'
+gem 'open_auth_devise', github: '99cm/open_auth_devise'
 gem 'rails-controller-testing'
 
 gemspec

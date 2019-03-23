@@ -13,7 +13,7 @@ end
 require 'rspec/rails'
 require 'ffaker'
 require 'shoulda-matchers'
-require 'pry'
+require 'byebug'
 
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
@@ -29,4 +29,4 @@ RSpec.configure do |config|
   end
 end
 
-Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each { |file| require file }
+Dir[File.join(File.dirname(__FILE__), 'support/**/*.rb')].each {|file| require file }

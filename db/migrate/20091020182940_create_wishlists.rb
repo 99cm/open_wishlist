@@ -1,6 +1,6 @@
-class CreateWishlists < SpreeExtension::Migration[4.2]
-  def self.up
-    create_table :wishlists do |t|
+class CreateWishlists < ActiveRecord::Migration[5.2]
+  def change
+    create_table :spree_wishlists do |t|
       t.references :user
       t.string :name
       t.string :access_hash
@@ -9,9 +9,8 @@ class CreateWishlists < SpreeExtension::Migration[4.2]
 
       t.timestamps null: false
     end
-  end
 
-  def self.down
-    drop_table :wishlists
+    add_index :spree_wishlists, [:user_id]
+    add_index :spree_wishlists, [:user_id, :is_default]
   end
 end
